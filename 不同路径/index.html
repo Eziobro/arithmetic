@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var uniquePaths = function (m, n) {
+        var dpx = [];
+        var dpy = [];
+        for (var i = 0; i < m; i++) {
+            dpy[i] = 1;
+        }
+        dpx[0] = dpy;
+        for (var i = 1; i < n; i++) {
+            for (var j = 0; j < m; j++) {
+                if(j === 0){
+                    dpx[i] = [1];
+                } else {
+                    dpx[i][j] = dpx[i - 1][j] + dpx[i][j - 1];
+                }
+            }
+        }
+        return dpx[n - 1][m - 1]
+    };
+    console.log(uniquePaths(5, 2));
+</script>
+
+</html>

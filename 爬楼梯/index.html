@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+     * @param {number} n
+     * @return {number}
+     */
+    var climbStairs = function (n) {
+        var goWays = 0;
+        run(1, 0, n);
+        run(2, 0, n);
+
+        function run (step, totleStep, maxStep) {
+            var currentStep = totleStep + step;
+            if (currentStep < maxStep) {
+                run(1, currentStep, n);
+                run(2, currentStep, n);
+            } else if(currentStep == maxStep) {
+                goWays ++;
+            }
+        }
+        return goWays;
+    };
+    console.log(climbStairs(6)); //13 
+</script>
+
+</html>

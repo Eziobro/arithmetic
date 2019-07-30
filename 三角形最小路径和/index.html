@@ -1,0 +1,96 @@
+/*
+* @Author: mikey.zhaopeng
+* @Date: 2019-06-03 11:11:21
+* @Last Modified by: mikey.zhaopeng
+* @Last Modified time: 2019-06-03 11:24:02
+*/
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 120
+    /**
+     * @param {number[][]} triangle
+     * @return {number}
+     * @decription 自顶向下
+     */
+    var minimumTotal = function (triangle) {
+        var rows = triangle.length;
+        var cols = triangle[rows - 1].length;
+        var dp = [];
+        var min = Number.MAX_VALUE;
+        for (var i = 0; i < rows; i++) {
+            dp[i] = new Array(cols).fill(0);
+        }
+        for (var r = 0; r < rows; r++) {
+            for (var c = 0; c < r + 1; c++) {
+                if (r == 0) {
+                    dp[r][c] = triangle[r][c];
+                } else if (c == 0) {
+                    dp[r][c] = triangle[r][c] + dp[r - 1][c];
+                } else if (c == r) {
+                    dp[r][c] = triangle[r][c] + dp[r - 1][c - 1];
+                } else {
+                    dp[r][c] = Math.min(dp[r - 1][c - 1], dp[r - 1][c]) + triangle[r][c];
+                }
+            }
+        }
+        for (var i = 0; i < cols; i++) {
+            min = dp[rows - 1][i] < min ? dp[rows - 1][i] : min;
+        }
+        return min;
+    };
+
+    /**
+     * @param {number[][]} triangle
+     * @return {number}
+     * @decription 自底向上
+     */
+    var minimumTotal = function (triangle) {
+        var rows = triangle.length;
+        var cols = triangle[rows - 1].length;
+        var dp = [];
+        var min = Number.MAX_VALUE;
+        for (var i = 0; i < rows; i++) {
+            dp[i] = new Array(cols).fill(0);
+        }
+        for (var r = rows - 1; r >= 0; r--) {
+            for (var c = 0; c < r + 1; c++) {
+                if (r == rows - 1) {
+                    dp[r] = triangle[r];
+                } else {
+                    dp[r][c] = Math.min(dp[r + 1][c], dp[r + 1][c + 1]) + triangle[r][c];
+                }
+            }
+        }
+        console.log(dp)
+        return dp[0][0];
+    };
+
+
+    // minimumTotal([
+    //     [2],
+    //     [3, 4],
+    //     [6, 5, 7],
+    //     [4, 1, 8, 3]
+    // ])
+
+    console.log(minimumTotal([
+        [2],
+        [2, 1],
+        [1, 4, 5],
+        [2, 3, 5, 1]
+    ]))
+</script>
+
+</html>

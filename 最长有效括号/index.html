@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /**
+     * @param {string} s
+     * @return {number}
+     */
+    var longestValidParentheses = function (s) {
+        var Len = s.length;
+        var arr = [];
+        var number = 0;
+        var currentLen = 0;
+        for (var i = 0; i < Len; i++) {
+            if (s[i] == '(') {
+                arr.push(s[i]);
+            } else if (s[i] == ')' && arr.length != 0) {
+                arr.length -= 1;
+                if (arr.length != 0) {
+                    currentLen += 2;
+                } else {
+                    number += currentLen + 2;
+                    currentLen = 0;
+
+                }
+            }
+        }
+        return number;
+    };
+
+    var s = "(()";
+    console.log(longestValidParentheses(s));
+</script>
+
+</html>
