@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
+  "editor.autoClosingBrackets": "beforeWhitespace",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "editor.codeLens": true,
+  "editor.tabSize": 4,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/target": true,
+    "**/logs": true
+  },
+  "eslint.enable": true,
+  "eslint.run": "onType",
+  "eslint.options": {
+    "extensions": [".js", ".vue"]
+  }
+}
