@@ -10,19 +10,19 @@
  * @return {number}
  */
 var maxArea = function (height) {
-  var start = 0,
-    end = height.length - 1;
-  var total = 0;
-  while (start < end) {
-    const temp = Math.min(height[start], height[end]) * (end - start);
-    total = Math.max(total, temp);
-    if (height[start] > height[end]) {
-      end--;
-    } else {
-      start++;
+    var start = 0,
+        end = height.length - 1;
+    var total = 0;
+    while (start < end) {
+        const temp = Math.min(height[start], height[end]) * (end - start);
+        total = Math.max(total, temp);
+        if (height[start] > height[end]) {
+            end--;
+        } else {
+            start++;
+        }
     }
-  }
-  return total;
+    return total;
 };
 // @lc code=end
 
@@ -55,7 +55,3 @@ var maxArea = function (height) {
  * 根据 公式 容积 = min(arr[i],arr[j]) * (j - i)，可以尽量保证 j - i最大
  * https://leetcode-cn.com/problems/container-with-most-water/solution/container-with-most-water-shuang-zhi-zhen-fa-yi-do/
  */
-
-// @after-stub-for-debug-begin
-module.exports = maxArea;
-// @after-stub-for-debug-end
